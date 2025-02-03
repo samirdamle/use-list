@@ -1,0 +1,38 @@
+{
+    "name": "@samirdamle/use-list",
+    "description": "A simple React hook to display, edit, and manage a list of items.",
+    "author": "Samir Damle",
+    "license": "MIT",
+    "private": false,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/samirdamle/use-list.git"
+    },
+    "keywords": [
+        "react",
+        "hook"
+    ],
+    "bugs": {
+        "url": "https://github.com/samirdamle/use-list/issues"
+    },
+    "homepage": "https://github.com/samirdamle/use-list#readme",
+    "version": "0.0.1",
+    "main": "dist/index.es.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc && vite build",
+        "prepublishOnly": "npm run build"
+    },
+    "peerDependencies": {
+        "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.15",
+        "typescript": "^5.0.4",
+        "vite": "^4.4.5",
+        "vite-plugin-dts": "^3.5.1"
+    }
+}
