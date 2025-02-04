@@ -3,8 +3,8 @@ import { useCallback, useEffect, useState } from 'react'
 const clone = (obj: any) => JSON.parse(JSON.stringify(obj))
 
 type UseListOptions = {
-    selectedProp: string
-    matchedProp: string
+    selectedProp?: string
+    matchedProp?: string
 }
 interface UseListResult<T extends object> {
     list: T[]
@@ -104,10 +104,10 @@ export function useList<T extends object>(inputList: T[] = [], options: UseListO
                 if (item[property]) {
                     const x = typeof item[property] === 'string' ? item[property].toLowerCase() : item[property].toString()
                     const q = typeof item[property] === 'string' ? query.toLowerCase() : query
-                    item[options.matchedProp] = x.includes(q)
+                    if (options.matchedProp) item[options.matchedProp] = x.includes(q)
                     return item
                 } else {
-                    item[options.matchedProp] = false
+                    if (options.matchedProp) item[options.matchedProp] = false
                 }
             })
         setListData(updatedList)
@@ -116,7 +116,7 @@ export function useList<T extends object>(inputList: T[] = [], options: UseListO
     const clearFilters = () => {
         const updatedList = clone(listData)
         updatedList.forEach((item: any) => {
-            item[options.matchedProp] = false
+            if (options.matchedProp) item[options.matchedProp] = false
         })
         setListData(updatedList)
     }
@@ -138,7 +138,7 @@ export function useList<T extends object>(inputList: T[] = [], options: UseListO
     const toggleSelectAllItems = (doSelect = false) => {
         if (!options) return
         const updatedList = clone(listData).map((item: any) => {
-            item[options.selectedProp] = doSelect
+            if (options.selectedProp) item[options.selectedProp] = doSelect
             return item
         })
         setListData(updatedList)
@@ -147,7 +147,7 @@ export function useList<T extends object>(inputList: T[] = [], options: UseListO
     const toggleSelectItem = (index = 0, doSelect = false) => {
         if (!(options && listData[index])) return
         const updatedList = clone(listData)
-        updatedList[index][options.selectedProp] = doSelect
+        if (index != null && options.selectedProp) updatedList[index][options.selectedProp] = doSelect
         setListData(updatedList)
     }
 
