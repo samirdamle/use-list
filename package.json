@@ -16,7 +16,7 @@
         "url": "https://github.com/samirdamle/use-list/issues"
     },
     "homepage": "https://github.com/samirdamle/use-list#readme",
-    "version": "0.1.1",
+    "version": "1.0.0",
     "type": "module",
     "main": "dist/index.es.js",
     "types": "dist/index.d.ts",
